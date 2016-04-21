@@ -1,0 +1,36 @@
+MAINTAINER albertop9-@hotmail.com
+
+# Dockerfile
+
+# Version:          1
+# Software:         FASTX-Toolkit
+# Software Version: 0.0.14
+# Description:      The FASTX-Toolkit is a collection of command line tools for Short-Reads FASTA/FASTQ files preprocessing.
+# Sitio web:        https:https://github.com/agordon/fastx_toolkit/releases/download/0.0.14/fastx_toolkit-0.0.14.tar.bz2
+# Tags:             Herramientas de analisis genomicos
+# Provee:           fastx_toolkit-0.0.14.
+# Imagen-base:       biodckr/biodocker
+# Build :        docker build biodckrdev/fastx_toolkit-0.0.14/
+# Pull :         docker pull biodckrdev/fastx_toolkit-0.0.14
+# Run :          docker run biodckrdev/fastx_tool
+
+# Tomamos la base de la imagen de Ubuntu
+FROM biodckr/biodocker
+#Para correrlo
+
+RUN wget https://github.com/agordon/fastx_toolkit/releases/download/0.0.14/fastx_toolkit-0.0.14.tar.bz2-O 
+  tar xvf fastx_toolkit-0.0.14.tar.bz2-O
+  rm fastx_toolkit-0.0.14.tar
+  cd fastx_toolkit
+  To compile to tools, run:
+
+  ./configure
+    make
+  
+#Para instalar las herramientas debes ser usuario (root) 
+
+    sudo make install
+
+Esto instalara las herramientas en la carpeta default /usr/local/bin.
+ 
+  
